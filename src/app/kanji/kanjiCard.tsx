@@ -10,7 +10,7 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Volume2 } from "lucide-react";
 import Flippy, { FrontSide, BackSide } from "react-flippy";
-import { Kanji } from "@/type";
+import { Kanji } from "@/types/kanji";
 import { cn } from "@/lib/utils";
 
 type KanjiCardProps = {

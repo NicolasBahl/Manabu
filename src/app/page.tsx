@@ -1,8 +1,10 @@
 import Image from "next/image";
 import Landingpage from "@/assets/images/landing-page.png";
 import { Button } from "@/components/ui/button";
-import { Play, Rocket, Swords } from "lucide-react";
-import CardUi from "@/components/card";
+import { Play } from "lucide-react";
+import WebSiteConceptCard from "@/components/webSiteConceptCard";
+
+import * as React from "react";
 export default function Page() {
   return (
     <>
@@ -33,25 +35,25 @@ export default function Page() {
           height={500}
         />
       </div>
-      <div className="flex flex-col items-center sm:flex-col sm:items-center md:flex-row lg:flex-row lg:justify-around">
-        <CardUi
-          title={"Learn at Your Own Pace"}
+      <div className="flex flex-col items-center md:flex md:flex-row md:justify-between lg:flex lg:justify-around">
+        <WebSiteConceptCard
+          title={"Hiragana"}
           description={
-            "Discover a flexible learning experience tailored to your schedule and progress."
+            "Discover Hiragana, the essential phonetic script used in the Japanese language, perfect for beginners to read and write Japanese."
           }
-          icon={<Rocket />}
+          icon={"ひらがな"}
         />
-        <CardUi
-          title={"Engaging and Interactive"}
+        <WebSiteConceptCard
+          title={"Katakana"}
           description={
-            "Dive into fun quizzes, flashcards, and writing exercises that keep you motivated and inspired."
+            "Learn about Katakana, the script used primarily for foreign words, loanwords, and onomatopoeia in Japanese, adding flair to your language skills."
           }
-          icon={<Swords />}
+          icon={"カタカナ"}
         />
-        <CardUi
-          title={"Master Hiragana, Katakana, and Kanji"}
+        <WebSiteConceptCard
+          title={"Kanji Characters"}
           description={
-            "Build a solid foundation in all three writing systems, unlocking the beauty of the Japanese language."
+            "Explore the complex and expressive world of Kanji, where each character carries unique meanings and historical significance."
           }
           icon={"文字"}
         />

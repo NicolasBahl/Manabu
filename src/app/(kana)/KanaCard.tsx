@@ -1,10 +1,11 @@
 "use client";
 
 import { Badge } from "@/components/ui/badge";
-import { Card, CardFooter, CardHeader } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { Volume2 } from "lucide-react";
 import * as React from "react";
-import { cn } from "@/lib/utils";
+import { cn, handleSpeak } from "@/lib/utils";
+import { M_PLUS_1 } from "next/font/google";
 
 type KanaCardProps = {
   type: "ひらがな" | "カタカナ";
@@ -12,48 +13,43 @@ type KanaCardProps = {
   romaji: string;
 };
 
-const KanaCard = (props: KanaCardProps) => {
-  const getKanaBadgeColor = (type) => {
-    if (type === "ひらがな") return "bg-red-500";
-    else return "bg-yellow-500";
+const kanseiOpti = M_PLUS_1({
+    subsets: ["latin-ext"],
+    weight: ["700"],
+    display: "swap",
+    variable: "--font-kaisei-opti",
+});
+
+export default function KanaCard({ type, kana, romaji }: KanaCardProps) {
+  const getKanaBadgeColor = (type: string) => {
+    return type === "ひらがな" ? "bg-red-500" : "bg-yellow-500";
   };
 
-  const handleSpeak = (text: string) => {
-    const utterance = new SpeechSynthesisUtterance(text);
-    utterance.lang = "ja-JP";
-    speechSynthesis.speak(utterance);
-  };
-
-  const { type, kana, romaji } = props;
   return (
-    <Card className="w-[250px] h-[200px] flex flex-col justify-between transition-all duration-300 hover:shadow-lg cursor-pointer relative">
+    <Card className="w-full max-w-[250px] h-[200px] flex flex-col justify-between transition-all duration-300 hover:shadow-lg cursor-pointer relative group">
       <Badge
         className={cn(
-          "text-white px-3 py-1 absolute top-2 left-2",
+          "text-white px-3 py-1 absolute top-2 left-2 transition-opacity",
           getKanaBadgeColor(type),
         )}
       >
         {type}
       </Badge>
-      <CardHeader className="flex justify-center  items-center">
-        <div className="text-7xl font-bold">{kana}</div>
-        <div className={"text-center text-gray-400"}>
-          {romaji.toUpperCase()}
-        </div>
-      </CardHeader>
-
-      <CardFooter className="flex justify-end pb-2 pr-2">
+      <div className={"absolute top-2 right-2"}>
         <button
-          onClick={() => {
-            handleSpeak(kana);
-          }}
-          className="p-2 rounded-full bg-primary/10 hover:bg-primary/20 transition-colors"
+          onClick={() => handleSpeak(kana)}
+          className="p-2 rounded-full bg-primary/10 "
+          aria-label="Speak kana"
         >
           <Volume2 className="w-4 h-4" />
         </button>
-      </CardFooter>
+      </div>
+      <CardContent className="flex flex-col items-center justify-center h-full pt-10">
+        <div className={`${kanseiOpti.variable} font-sans text-7xl font-bold mb-2`}>{kana}</div>
+        <div className="text-sm text-muted-foreground">
+          {romaji.toUpperCase()}
+        </div>
+      </CardContent>
     </Card>
   );
-};
-
-export default KanaCard;
+}

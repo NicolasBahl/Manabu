@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { Montserrat } from "next/font/google";
+import { Kaisei_Opti, Montserrat } from "next/font/google";
 import NavigationBar from "@/components/navigationBar";
 
 const montserrat = Montserrat({

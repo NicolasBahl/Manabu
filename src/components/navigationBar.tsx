@@ -16,20 +16,18 @@ const NavigationBar = (props: NavigationBarProps) => {
   const { links } = props;
 
   return (
-    <div  className={"bg-gr flex justify-between items-center"}>
+    <div  className={"flex flex-col justify-center items-center md:flex-row md:justify-around "}>
       <Link href={"/"}>
         <Image
-          className={"mx-2 my-2"}
+          className={"w-[300px] mt-2.5 mb-2.5 md:w-[200px]"}
           src={Manabu}
-          width={150}
-          height={150}
           alt="logo of Manabu"
         />
       </Link>
       {links.map((link, index) => {
         return (
           <Link
-            className={"text-base font-bold mr-8"}
+            className={"text-2xl mt-2 mb-2 font-bold md:text-xl "}
             key={index}
             href={`/${link.name.toLowerCase()}`}
           >

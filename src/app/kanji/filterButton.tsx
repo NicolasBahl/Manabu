@@ -2,35 +2,34 @@
 
 import { Button } from "@/components/ui/button";
 import * as React from "react";
+import { cn } from "@/lib/utils";
 
-type Button = {
+type ButtonProps = {
   label: string;
   onClick: () => void;
-  isSelected: boolean;
-  buttonNumber: number;
+  isClicked?: boolean;
   className?: string;
 };
 
-const getButtonColor = (buttonNumber: number) => {
-  if (buttonNumber === 1) return "rgb(239 68 68)";
-  if (buttonNumber === 2) return "rgb(234 179 8)";
-  if (buttonNumber === 3) return "rgb(34 197 94)";
-  if (buttonNumber === 4) return "rgb(59 130 246)";
-  if (buttonNumber === 5) return "rgb(168 85 247)";
+const getButtonColor = (buttonLabel: string) => {
+  if (buttonLabel === "JLPT 1") return "bg-red-500";
+  if (buttonLabel === "JLPT 2") return "bg-yellow-500";
+  if (buttonLabel === "JLPT 3") return "bg-green-500";
+  if (buttonLabel === "JLPT 4") return "bg-blue-500";
+  if (buttonLabel === "JLPT 5") return "bg-purple-500";
 };
 
-const FilterButton = (props: Button) => {
-  const { label, onClick, isSelected, buttonNumber, className } = props;
+const FilterButton = (props: ButtonProps) => {
+  const { label, onClick, isClicked, className } = props;
+
   return (
     <Button
+      variant={"filter"}
       onClick={onClick}
-      style={{
-        backgroundColor:
-          isSelected === buttonNumber
-            ? getButtonColor(buttonNumber)
-            : "#171717",
-      }}
-      className={className}
+      className={cn(
+        isClicked ? getButtonColor(label) : "bg-gray-800",
+        className,
+      )}
     >
       {label}
     </Button>
