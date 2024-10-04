@@ -21,17 +21,12 @@ Manabu is a web application designed to help users learn Japanese characters, in
   
 ## Screenshot
 
-<img height="700px" src="https://github.com/user-attachments/assets/7f5a13cb-1867-437e-9198-ec10fb3e6f0a"/>
-
----
-<img height="700px" src="https://github.com/user-attachments/assets/8f4ab232-62a0-417d-a220-6443b0707951"/>
+<img height="700" src="https://github.com/user-attachments/assets/7f5a13cb-1867-437e-9198-ec10fb3e6f0a"/>
 
 ---
 
-<img height="700px" src="https://github.com/user-attachments/assets/2c6cc46d-32dd-4388-8043-36ec8d502031"/>
+<img  height="700" src="https://github.com/user-attachments/assets/b1df086c-ea46-4898-9814-9621624de579"/>
 
----
-<img height="700px" src="https://github.com/user-attachments/assets/63568650-cfd6-4ffa-9d70-40b000daedef"/>
 
 
 
