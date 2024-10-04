@@ -29,6 +29,7 @@ const FilterButton = (props: ButtonProps) => {
       className={cn(
         isClicked ? getButtonColor(label) : "bg-gray-800",
         className,
+        "w-44",
       )}
     >
       {label}

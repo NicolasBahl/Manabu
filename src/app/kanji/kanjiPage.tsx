@@ -9,6 +9,7 @@ import KanjiPagination from "@/app/kanji/kanjiPagination";
 
 import { handleSpeak } from "@/lib/utils";
 import InputContainer from "@/app/kanji/inputContainer";
+import { useEffect } from "react";
 
 const KanjiPage = () => {
   const kanjiEntries = Object.entries(DATA).sort(
@@ -66,6 +67,21 @@ const KanjiPage = () => {
     }
   };
 
+  useEffect(() => {
+    if (inputValue && inputValue !== "" && selectedLevel !== null) {
+      const filteredKanji = kanjiEntries.filter(([kanji, details]) => {
+        return kanji.includes(inputValue) && details.jlpt_new === selectedLevel;
+      });
+      setFilteredData(filteredKanji);
+    }
+    if (inputValue && inputValue !== "" && selectedLevel === null) {
+      const filteredKanji = kanjiEntries.filter(([kanji]) => {
+        return kanji.includes(inputValue);
+      });
+      setFilteredData(filteredKanji);
+    }
+  }, [inputValue, selectedLevel]);
+
   return (
     <>
       <InputContainer
@@ -75,14 +91,25 @@ const KanjiPage = () => {
       />
       <div className="container mx-auto mt-6">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-0 justify-items-center">
-          {filteredData.slice(startIndex, endIndex).map(([kanji, details]) => (
-            <KanjiCard
-              key={kanji}
-              kanji={kanji}
-              details={details}
-              handleSpeak={handleSpeak}
-            />
-          ))}
+          {filteredData.length > 0 ? (
+            filteredData
+              .slice(startIndex, endIndex)
+              .map(([kanji, details]) => (
+                <KanjiCard
+                  key={kanji}
+                  kanji={kanji}
+                  details={details}
+                  handleSpeak={handleSpeak}
+                />
+              ))
+          ) : (
+            <div className={"mt-6"}>
+              <div className={"flex flex-col items-center justify-center"}>
+                <h3 className={"text-7xl"}>⚠️</h3>
+                <h3 className={"text-7xl text-center"}>Kanji not found</h3>
+              </div>
+            </div>
+          )}
         </div>
       </div>
       {inputValue === "" && (

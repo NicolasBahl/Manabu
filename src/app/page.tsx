@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Landingpage from "@/assets/images/landing-page.png";
+import LandingPage from "@/assets/images/landing-page.png";
 import { Button } from "@/components/ui/button";
 import { Play } from "lucide-react";
 import WebSiteConceptCard from "@/components/webSiteConceptCard";
@@ -29,7 +29,7 @@ export default function Page() {
         </div>
         <Image
           className={"hidden md:block rounded-3xl"}
-          src={Landingpage}
+          src={LandingPage}
           alt={"landing page image"}
           width={500}
           height={500}

@@ -22,17 +22,21 @@ const InputContainer = (props: InputContainerProps) => {
   ];
 
   return (
-    <div className="mr-2.5 ml-2.5 flex flex-col md:flex md:flex-row">
+    <div className="mr-2.5 ml-2.5 flex flex-col items-center md:flex md:flex-row">
       {buttons.map((button) => (
         <FilterButton
-          className={"sm: mt-2 sm: mb-2 "}
+          className={"mt-2 mb-2 md:mr-2 md:ml-2"}
           key={button.label}
           label={button.label}
           isClicked={selectedLevel === button.level}
           onClick={() => handleFilter(button.level)}
         />
       ))}
-      <Input className={"mt-2"} onChange={handleInputChange} placeholder="Search by kanji" />
+      <Input
+        className={"mt-2 w-44 md:mt-0 md:w-64 md:ml-2"}
+        onChange={handleInputChange}
+        placeholder="Search by kanji"
+      />
     </div>
   );
 };
