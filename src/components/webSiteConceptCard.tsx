@@ -13,7 +13,11 @@ type CardUiProps = {
   description: string;
 };
 
-export default function WebSiteConceptCard({ icon, title, description }: CardUiProps) {
+export default function WebSiteConceptCard({
+  icon,
+  title,
+  description,
+}: CardUiProps) {
   return (
     <Card
       className={`max-w-[400px] max-h-[300px] mt-2 mb-2 ml-2 mr-2 bg-primary text-primary-foreground`}
